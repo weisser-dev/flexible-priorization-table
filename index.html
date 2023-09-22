@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Projekt Priorisierung</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles.css"> <!-- External CSS -->
+</head>
+<body>
+
+<div class="container">
+    <h1 contenteditable="true">Themenpriorisierung</h1>
+    <div class="table-wrapper">
+        <table class="table">
+            <thead contenteditable="true">
+            <tr>
+                <th scope="col">Prio</th>
+                <th scope="col">Thema</th>
+                <th scope="col">Technisch Verantwortlich</th>
+                <th scope="col">Fachlich Verantwortlich</th>
+                <th scope="col">Ticket-ID / Epic</th>
+                <th scope="col">Aktion</th>
+            </tr>
+            </thead>
+            <tbody id="tableBody">
+            <tr>
+                <td><i class="fas fa-exclamation-triangle text-warning" title="Kritisch"></i></td>
+                <td contenteditable="true">Beispielthema</td>
+                <td contenteditable="true">Max Mustermann</td>
+                <td contenteditable="true">Erika Mustermann</td>
+                <td contenteditable="true">#123</td>
+                <td>
+                    <button onclick="moveRow(-1, this)" class="btn btn-light"><i class="fas fa-arrow-up"></i></button>
+                    <button onclick="moveRow(1, this)" class="btn btn-light"><i class="fas fa-arrow-down"></i></button>
+                    <button onclick="toggleStrike(this)" class="btn btn-light"><i class="fas fa-trash-alt text-secondary" title="Löschen"></i></button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <button onclick="addRow()" class="btn btn-light">Neues Thema</button>
+    <button onclick="copyTable()" class="btn btn-light"><i class="fas fa-copy"></i> Copy</button>
+</div>
+<div id="contextMenu" class="context-menu dropdown-menu">
+    <ul id="rowMenu" class="p-0">
+        <li class="dropdown-item" onclick="addRowAbove()"><i class="fas fa-arrow-up"></i> Oberhalb hinzufügen</li>
+        <li class="dropdown-item" onclick="addRowBelow()"><i class="fas fa-arrow-down"></i> Unterhalb hinzufügen</li>
+        <li class="dropdown-item" onclick="moveRowToTop()"><i class="fas fa-level-up-alt"></i> Nach oben verschieben</li>
+        <li class="dropdown-item" onclick="moveRowToBottom()"><i class="fas fa-level-down-alt"></i> Nach unten verschieben</li>
+        <li class="dropdown-item" onclick="setOnHold()"><i class="fas fa-pause"></i> On Hold setzen</li>
+        <li class="dropdown-item" onclick="toggleStrikeRow()"><i class="fas fa-times"></i> Streichen</li>
+        <li class="dropdown-item" onclick="deleteRow()"><i class="fas fa-trash"></i> Löschen</li>
+    </ul>
+    <ul id="columnMenu" class="p-0">
+        <li class="dropdown-item" onclick="addColumnLeft()"><i class="fas fa-columns"></i> Links einfügen</li>
+        <li class="dropdown-item" onclick="addColumnRight()"><i class="fas fa-columns"></i> Rechts einfügen</li>
+        <li class="dropdown-item" onclick="deleteColumn()"><i class="fas fa-trash"></i> Löschen</li>
+    </ul>
+</div>
+
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Zeile löschen</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Möchtest du diese Zeile wirklich löschen?
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="doNotAskAgain">
+                    <label class="form-check-label" for="doNotAskAgain">Zukünftig nicht mehr fragen</label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Nein</button>
+                <button type="button" class="btn btn-danger" id="confirmDelete">Ja</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="script.js"></script> <!-- External JavaScript -->
+</body>
+</html>
