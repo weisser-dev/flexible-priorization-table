@@ -1,7 +1,24 @@
+# Flexible Prioritization Table
 
-# Prioritization Table README
+A single-page, editable table for prioritizing topics or projects: reorder rows, assign technical and functional owners, link tickets, strike through finished items, put items on hold and copy the whole table into Confluence or SharePoint. The UI is in German.
 
-This README provides information about the Prioritization Table, a flexible table for prioritizing tasks or projects. The table is designed to help you manage and organize your tasks effectively. You can use this table to prioritize items based on their importance, assign responsibilities, and manage their status.
+**Live:** [flexible-priorization-table.weisser.dev](https://flexible-priorization-table.weisser.dev)
+
+![Screenshot of flexible-priorization-table.weisser.dev](docs/screenshot.jpg)
+
+Known issue: the column context menu is currently buggy; everything else works.
+
+## Run locally
+
+Static page without build step. Open `index.html` in a browser (Bootstrap, Font Awesome, jQuery and Popper are loaded from CDNs, so an internet connection is needed), or:
+
+```bash
+python3 -m http.server 8080
+```
+
+## Tech stack
+
+HTML, CSS, JavaScript (`script.js`, `styles.css`), Bootstrap 4, jQuery, Font Awesome.
 
 ## Table Features
 
@@ -20,19 +37,6 @@ The Prioritization Table consists of the following columns:
 4.  **Functional Responsible (Fachlich Verantwortlich):** Specifies the person responsible for functional aspects.
 5.  **Ticket-ID / Epic:** Contains a link to the corresponding ticket or epic.
 6.  **Action (Aktion):** Allows you to perform actions like moving rows, striking through, and deleting.
-
-## Getting Started
-
-1.  Copy the HTML code provided in the `<!DOCTYPE html> ... </html>` section and paste it into your HTML editor.
-2.  Make sure to include the necessary CSS and JavaScript files:
-    -   Bootstrap CSS: `https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css`
-    -   Font Awesome CSS: `https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css`
-    -   Custom CSS: `styles.css` (External CSS)
-    -   jQuery: `https://code.jquery.com/jquery-3.3.1.slim.min.js`
-    -   Popper.js: `https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js`
-    -   Bootstrap JS: `https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js`
-    -   Custom JavaScript: `script.js` (External JavaScript)
-3.  Customize the table by adding or modifying rows as needed.
 
 ## Usage
 
